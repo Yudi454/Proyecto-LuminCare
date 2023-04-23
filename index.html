@@ -15,20 +15,42 @@
     <header>
         <nav class="navbar bg-body-tertiary">
             <div class="container">
-              <a class="navbar navbar-brand" href="#">
+                <a class="navbar navbar-brand" href="#">
 
-              </a>
+                </a>
             </div>
-          </nav>
+        </nav>
     </header>
     <main>
         <article>
             <h1 class="d-flex justify-content-center">Administracion</h1>
             <div class="button-agregar">
-            <button type="button" class="button-color btn btn-lg">Large button</button>
+                <section>
+                    <button type="button" class="button-color btn btn-lg" data-bs-toggle="modal"
+                        data-bs-target="#modal">Agregar Producto</button>
+                    <div id="modal" class="modal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Modal body text goes here.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
             <section>
-                
+
             </section>
         </article>
     </main>
