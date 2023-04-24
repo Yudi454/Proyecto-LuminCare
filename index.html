@@ -39,15 +39,25 @@
                                 <form class="needs-validation" novalidate>
                                     <div class="modal-body">
                                         <div>
-                                            <label for="name" class="form-label"> Nombre</label>
-                                            <input type="text" id="name" class="form-control" required
-                                                minlength="5" maxlength="20" placeholder="Nombre">
-                                        </div class="valid-feedback">
+                                            <label for="codigo" class="form-label">Codigo</label>
+                                            <input type="password" id="codigo" class="form-control" required
+                                                minlength="8" maxlength="16" placeholder="codigo">
+                                        </div>
                                         <div>
-                                            <label for="" rows="3" class="form-label"> Descripcion</label>
+                                            <label for="name" class="form-label"> Nombre</label>
+                                            <input type="text" id="name" class="form-control" required minlength="5"
+                                                maxlength="20" placeholder="Nombre">
+                                        </div>
+                                        <div>
+                                            <label for="" class="form-label"> Descripcion</label>
                                             <textarea id="" class="form-control " required minlength="5"
                                                 maxlength="200"></textarea>
-                                            </div class="valid-feedback">
+                                        </div>
+                                        <div>
+                                            <label for="" class="form-label">Imagen por URL</label>
+                                            <input type="text" id="" class="form-control" required minlength="10"
+                                                placeholder="URL de la imagen">
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -61,7 +71,50 @@
                 </section>
             </div>
             <section>
-
+                <h2 class="d-flex justify-content-center">Tabla de Productos</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">URL</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">123456</th>
+                                <td>Celular x23</td>
+                                <td>16 gb ram</td>
+                                <td>https://image.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section>
+                <h2 class="d-flex justify-content-center">Tabla de Usuarios</h2>
+                <div class="tabla-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre de Usuario</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Contraseña</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Lucas Yudi</th>
+                                <td>lucas55@gmail.com</td>
+                                <td>Lucas1234</td>
+                            </tr>
+                        </tbody>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </section>
         </article>
     </main>
