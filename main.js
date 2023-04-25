@@ -11,9 +11,20 @@
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
+          document.getElementById("id-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de forma automática
+            swal({ // Muestra el mensaje de éxito utilizando SweetAlert
+              title: "Good job!",
+              text: "You clicked the button!",
+              icon: "success",
+              button: "Aww yiss!",
+            });
+          });
         }
   
         form.classList.add('was-validated')
       }, false)
     })
   })()
+
+  
