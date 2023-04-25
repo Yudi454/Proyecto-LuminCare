@@ -1,24 +1,24 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+//Inicio script de bootstrap para validar el formulario
 (() => {
     'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    
     const forms = document.querySelectorAll('.needs-validation')
   
-    // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
       form.addEventListener('submit', event => {
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
           document.getElementById("id-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Evita que el formulario se envíe de forma automática
-            swal({ // Muestra el mensaje de éxito utilizando SweetAlert
+            event.preventDefault(); 
+            //Inicio alerta de sweet alert
+            swal({ 
               title: "Good job!",
               text: "You clicked the button!",
               icon: "success",
               button: "Aww yiss!",
             });
+            //Fin alerta de sweet alert
           });
         }
   
@@ -26,5 +26,6 @@
       }, false)
     })
   })()
+//Inicio script de bootstrap para validar el formulario
 
   
