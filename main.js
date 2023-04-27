@@ -24,6 +24,7 @@
             icon: "success",
             button: "Aww yiss!",
           });
+          agregarproducto()
           vaciardatos();
           //Fin alerta de sweet alert
         }
@@ -78,18 +79,22 @@ function agregarproducto() {
   var filaproductos = document.createElement("tr");
 
   var encabezadoproductos = document.createElement("th");
-  encabezadoproductos.innerHTML = "Encabezado";
+  let codigoInput = document.getElementById("codigo");
+  encabezadoproductos.innerHTML = codigoInput.value;
 
   filaproductos.appendChild(encabezadoproductos);
 
   var celda1 = document.createElement("td");
-  celda1.innerHTML = "Celda 1";
+  let codigoNombre = document.getElementById("name");
+  celda1.innerHTML = codigoNombre.value;
 
   var celda2 = document.createElement("td");
-  celda2.innerHTML = "Celda 2";
+  let codigoDescripcion = document.getElementById("descripcion");
+  celda2.innerHTML = codigoDescripcion.value;
 
   var celda3 = document.createElement("td");
-  celda3.innerHTML = "Celda 3";
+  let codigoURL = document.getElementById("url");
+  celda3.innerHTML = codigoURL.value;
 
   filaproductos.appendChild(celda1);
   filaproductos.appendChild(celda2);
@@ -100,4 +105,3 @@ function agregarproducto() {
 }
 
 
-agregarproducto()
