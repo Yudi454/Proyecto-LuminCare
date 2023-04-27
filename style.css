@@ -46,3 +46,6 @@ rotateX(5deg);
 .article:hover img:last-child{
     opacity:1;
 }
+
+/* publicidad */
+.publicidadImg{max-height: 7rem; max-width: 100%;}
