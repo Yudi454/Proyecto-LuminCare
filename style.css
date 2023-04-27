@@ -3,3 +3,46 @@
     max-width: 100rem;
 }
 .carousel-inner{border: 0.7em solid rgb(148, 173, 196);}
+
+/* ofertas */
+.ofertas{max-height: 25rem;}
+.titulos-ofertas{text-decoration:underline;}
+.article{transition: all .3s ease;}
+.article img:first-child{
+    box-shadow: 6px 0px 23px 3px rgb(187, 226, 233);;
+    border-radius: 4px;
+    object-fit: cover;
+    width: 20rem;
+}
+.article img:last-child{
+    position: absolute;
+    width: 20rem;
+    left:0;
+    right: 0;
+    margin:auto;
+    transition: .3s ease;
+    opacity: 0;
+}
+.article:hover{
+transform: 
+perspective(200px)
+rotateX(5deg);
+}
+.article::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-image:
+        linear-gradient
+        (to bottom,transparent 10%,rgba(0,0,0,) 50%,
+        rgba(0,0,0)95%);
+        opacity: 0;
+        transition: all.3s ease
+    ;
+}
+.article:hover::before{
+    opacity: 1;
+}
+.article:hover img:last-child{
+    opacity:1;
+}
