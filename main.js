@@ -69,3 +69,35 @@ numerorandom()
 
 console.log(numerosGenerados)
 //Fin generador de numero random
+
+
+function agregarproducto() {
+
+  var tablaproductos = document.getElementById("body-productos");
+
+  var filaproductos = document.createElement("tr");
+
+  var encabezadoproductos = document.createElement("th");
+  encabezadoproductos.innerHTML = "Encabezado";
+
+  filaproductos.appendChild(encabezadoproductos);
+
+  var celda1 = document.createElement("td");
+  celda1.innerHTML = "Celda 1";
+
+  var celda2 = document.createElement("td");
+  celda2.innerHTML = "Celda 2";
+
+  var celda3 = document.createElement("td");
+  celda3.innerHTML = "Celda 3";
+
+  filaproductos.appendChild(celda1);
+  filaproductos.appendChild(celda2);
+  filaproductos.appendChild(celda3);
+
+
+  tablaproductos.appendChild(filaproductos);
+}
+
+
+agregarproducto()
