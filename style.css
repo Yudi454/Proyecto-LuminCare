@@ -1,0 +1,5 @@
+.carousel-item{
+    max-height: 26rem; 
+    max-width: 100rem;
+}
+.carousel-inner{border: 0.7em solid rgb(148, 173, 196);}
