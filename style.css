@@ -1,28 +1,12 @@
-.navbar{
-    background-color: #11999E !important;
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+.imgSesion{
+    background-image: url(./img/imgLogin2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.footer{
-    background-color: #40514E;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-}
-
-.button-color{
-    background-color: #30E3CA !important;
-}
-
-.button-agregar{
-    display: flex;
-    justify-content: center;
-}
-
-th, td {
-    white-space: nowrap;
-}
-
-.tables{
-    margin: 4vh;
+.body{
+    font-family: 'Lora', serif;
 }
