@@ -71,3 +71,62 @@ rotateX(5deg);
 /* publicidad */
 .publicidadImg{max-height: 7rem; max-width: 100%;}
 
+/* catalogo */
+.productosImg{max-height: 15rem;}
+.contenedorImg{transition: all .3s ease;}
+
+/*Transicion de imagenes-productos*/
+.contenedorImg img:first-child{
+    border-radius: 4px;
+    object-fit: cover;
+    width: 14rem;
+    padding: 0.5em;
+}
+.contenedorImg img:last-child{
+    position: absolute;
+    width: 14rem;
+    padding: 0.5em;
+    left:0;
+    border-radius: 4px;
+    top: 0;
+    transition: .3s ease;
+    opacity: 0;
+}
+.contenedorImg:hover{
+transform: 
+perspective(200px)
+rotateX(5deg);
+}
+
+.contenedorImg::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-image:
+        linear-gradient
+        (to bottom,transparent 10%,rgba(0,0,0,) 50%,
+        rgba(0,0,0)95%);
+        opacity: 0;
+        transition: all.3s ease
+    ;
+}
+.contenedorImg:hover::before{opacity: 1;}
+.contenedorImg:hover img:last-child{opacity: 1;}
+.contenedorBtnComprar{opacity: 0;}
+.card:hover .contenedorBtnComprar {opacity: 1;}
+/*FIN Transicion de imagenes-productos*/
+
+/*Animacion productos*/
+.card .contenedorImg{
+    animation: float 3s linear infinite;
+    cursor: pointer;
+}
+
+  @keyframes float{
+    0%,100%{
+      transform: translateY(0rem);
+    }
+    50%{
+      transform: translateY(-0.5rem);
+    }
+  }
