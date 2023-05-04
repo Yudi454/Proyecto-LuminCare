@@ -1,22 +1,45 @@
-.carousel-item{
-    max-height: 26rem; 
-    max-width: 100rem;
+body{
+border: 0.7em solid rgb(148, 173, 196);
 }
-.carousel-inner{border: 0.7em solid rgb(148, 173, 196);}
+h2{
+    text-align: center;
+    margin: 1em;
+}
+.contenedorTextInicio{
+    background-color: rgb(238, 216, 200);
+}
+.imgInicio{
+    width: 35rem;
+    
+}
+.contenedorTextInicio{
+    border-top: 10rem;
+    width: 20rem;
+    height: 20rem;
+}
+.carrusel-item{
+ box-shadow: 0px 4px 12px rgba(0,0,0,0.1) ;  
+}
+.carousel-inner{border: 0.7em solid rgb(148, 173, 196);
+    background-color: rgb(241, 229, 220);
+    margin-top: 8em;}
+/* FIN carrusel*/
 
-/* ofertas */
-.ofertas{max-height: 25rem;}
+
+/* ofertas transicion de imagenes */
+.ofertas{max-height: 15rem;}
 .titulos-ofertas{text-decoration:underline;}
+
 .article{transition: all .3s ease;}
 .article img:first-child{
     box-shadow: 6px 0px 23px 3px rgb(187, 226, 233);;
     border-radius: 4px;
     object-fit: cover;
-    width: 20rem;
+    width: 15rem;
 }
 .article img:last-child{
     position: absolute;
-    width: 20rem;
+    width: 15rem;
     left:0;
     right: 0;
     margin:auto;
@@ -40,12 +63,11 @@ rotateX(5deg);
         transition: all.3s ease
     ;
 }
-.article:hover::before{
-    opacity: 1;
-}
-.article:hover img:last-child{
-    opacity:1;
-}
+.article:hover::before{opacity: 1;}
+.article:hover img:last-child{opacity:1;}
+/* FIN ofertas transicion de imagenes */
+
 
 /* publicidad */
 .publicidadImg{max-height: 7rem; max-width: 100%;}
+
