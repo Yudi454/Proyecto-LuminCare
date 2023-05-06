@@ -17,6 +17,7 @@
               event.preventDefault();
             });
         } else {
+          event.preventDefault(); 
           //Inicio alerta de sweet alert
           swal({
             title: "Good job!",
@@ -24,8 +25,9 @@
             icon: "success",
             button: "Aww yiss!",
           });
+          crearproducto()
           agregarproducto()
-          vaciardatos();
+          formularioproductos.reset()
           //Fin alerta de sweet alert
         }
 
@@ -37,71 +39,61 @@
 })();
 //Fin script de bootstrap para validar el formulario
 
-//Inicio funcion para borrar datos luego de enviar el formulario
-function vaciardatos() {
-  let codigoInput = document.getElementById("codigo");
-  codigoInput.value = "";
-  let codigoNombre = document.getElementById("name");
-  codigoNombre.value = "";
-  let codigoDescripcion = document.getElementById("descripcion");
-  codigoDescripcion.value = "";
-  let codigoURL = document.getElementById("url");
-  codigoURL.value = "";
+let productos = []
+
+const listaProductos = document.getElementById("listadeproductos");
+let codigoInput = document.getElementById("codigo");
+let codigocategoria = document.getElementById("categoria")
+let codigoNombre = document.getElementById("name");
+let codigoPrecio = document.getElementById("precio")
+let codigoDescripcion = document.getElementById("descripcion");
+let codigoURL = document.getElementById("url");
+let formularioproductos = document.getElementById("id-form")
+
+
+function crearproducto(){
+  const nombre = codigoNombre.value
+  const descripcion = codigoDescripcion.value
+  const url = codigoURL.value
+  const categoria = codigocategoria.value
+  const codigo = codigoInput.value
+  const precio = codigoPrecio.value
+
+  const productos2 =  {codigo,nombre,precio,categoria,descripcion,url}
+
+  console.log(productos2)
+
+  productos.push(productos2)
+
+  console.log(productos)  
+
+  
 }
-//Fin funcion para borrar datos luego de enviar el formulario
 
-
-//Inicio generador de numero random
-const numerosGenerados = []
-
-function numerorandom() {
-  let numerorandom = Math.floor(Math.random() * 999999)
-
-  while (numerosGenerados.includes(numerorandom)) {
-    numerorandom = Math.floor(Math.random() * 999999)
-  }
-
-  numerosGenerados.push(numerorandom)
-  return numerorandom
-}
-
-numerorandom()
-numerorandom()
-
-console.log(numerosGenerados)
-//Fin generador de numero random
 
 
 function agregarproducto() {
+  listaProductos.querySelector("tbody").innerHTML = "";
 
-  var tablaproductos = document.getElementById("body-productos");
+  productos.forEach((producto) => {
+    const tr = document.createElement("tr")
+    tr.innerHTML = `
+    <th scope="row">${producto.codigo}</th>
+    <td>${producto.categoria}</td>
+    <td>${producto.nombre}</td>
+    <td>$${producto.precio}</td>
+    <td>${producto.descripcion}</td>
+    <td>${producto.url}</td>
+    `;
+    listaProductos.querySelector("tbody").appendChild(tr)
+  });
 
-  var filaproductos = document.createElement("tr");
-
-  var encabezadoproductos = document.createElement("th");
-  let codigoInput = document.getElementById("codigo");
-  encabezadoproductos.innerHTML = codigoInput.value;
-
-  filaproductos.appendChild(encabezadoproductos);
-
-  var celda1 = document.createElement("td");
-  let codigoNombre = document.getElementById("name");
-  celda1.innerHTML = codigoNombre.value;
-
-  var celda2 = document.createElement("td");
-  let codigoDescripcion = document.getElementById("descripcion");
-  celda2.innerHTML = codigoDescripcion.value;
-
-  var celda3 = document.createElement("td");
-  let codigoURL = document.getElementById("url");
-  celda3.innerHTML = codigoURL.value;
-
-  filaproductos.appendChild(celda1);
-  filaproductos.appendChild(celda2);
-  filaproductos.appendChild(celda3);
-
-
-  tablaproductos.appendChild(filaproductos);
+  localStorage.setItem("productos", JSON.stringify(productos));
 }
 
+const obtenerProductos = localStorage.getItem("productos");
 
+if (obtenerProductos) {
+  productos = JSON.parse(obtenerProductos);
+  agregarproducto();
+}

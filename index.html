@@ -41,7 +41,7 @@
                                     <div class="modal-body">
                                         <div>
                                             <label for="codigo" class="form-label">Codigo</label>
-                                            <input type="password" id="codigo" class="form-control" required
+                                            <input type="text" id="codigo" class="form-control" required
                                                 minlength="8" maxlength="16" placeholder="codigo">
                                                 <div class="valid-feedback">
                                                     Todo bien.
@@ -49,6 +49,16 @@
                                                 <div class="invalid-feedback">
                                                     El valor minimo es 8 y maximo es 16.
                                                 </div>
+                                        </div>
+                                        <div>
+                                            <label class="form-label" for="categoria">Categoria</label>
+                                            <select class="form-select" id="categoria" required>
+                                                <option selected>Serum</option>
+                                                <option value="ProtectorSolar">ProtectorSolar</option>
+                                                <option value="Exfoliantes">Exfoliantes</option>
+                                                <option value="Mascarillas">Mascarillas</option>
+                                                <option value="All">All</option>
+                                            </select>
                                         </div>
                                         <div>
                                             <label for="name" class="form-label"> Nombre</label>
@@ -60,6 +70,16 @@
                                                 <div class="invalid-feedback">
                                                     El valor minimo es 5 y maximo es 20.
                                                 </div>
+                                        </div>
+                                        <div>
+                                            <label for="precio" class="form-label">Precio</label>
+                                            <input type="text" id="precio" class="form-control" required min="1" maxlength="12" placeholder="Precio">
+                                            <div class="valid-feedback">
+                                                Todo bien.
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                El precio ingresado minimo es de 1 y el maximo es de 12 caracteres
+                                            </div>
                                         </div>
                                         <div>
                                             <label for="descripcion" class="form-label"> Descripcion</label>
@@ -102,24 +122,19 @@
                 <!--Inicio Tabla de Productos-->
                 <h2 class="d-flex justify-content-center mt-5 mb-5">Tabla de Productos</h2>
                 <div class="tables table-responsive mt-5 mb-5">
-                    <table class="table">
+                    <table class="table" id="listadeproductos">
                         <thead>
                             <tr>
                                 <th scope="col">Codigo</th>
+                                <th scope="col">Categoria</th>
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">URL</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody id="body-productos">
-                            <tr>
-                                <th scope="row">123456</th>
-                                <td>Celular x23</td>
-                                <td>16 gb ram</td>
-                                <td>https://image.com</td>
-                            </tr>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div> 
                 <!--Fin Tabla de Productos-->
