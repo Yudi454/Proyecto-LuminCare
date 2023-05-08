@@ -47,7 +47,6 @@ import { arraynumeros,Numerorandom } from "./numerorandom.js";
 let productos = []
 
 const listaProductos = document.getElementById("listadeproductos");
-let codigoInput = document.getElementById("codigo");
 let codigocategoria = document.getElementById("categoria")
 let codigoNombre = document.getElementById("name");
 let codigoPrecio = document.getElementById("precio")
@@ -89,15 +88,16 @@ function agregarproducto() {
     <td>${producto.url}</td>
     <td>
     <div class="col-md">
-    <button type="button" class="btn btn-outline-secondary" data-mode="editar" id="${producto.codigo}">Secondary</button>
+    <button class="editar" data-id="${producto.codigo}" data-bs-toggle="modal"
+    data-bs-target="#modal">Editar</button>
     </div>
-    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button class="eliminar" class="btn btn-outline-secondary">Secondary</button>
     </td>
     `;
     listaProductos.querySelector("tbody").appendChild(tr)
+
   });
   
-  localStorage.setItem("productos", JSON.stringify(productos));
 }
 
 const obtenerProductos = localStorage.getItem("productos");
@@ -107,7 +107,20 @@ if (obtenerProductos) {
   agregarproducto();
 }
 
-productos.codigo.addEventListener("click", (e) => {
-  console.log("Hola Mundo")
-})
 
+localStorage.setItem("productos", JSON.stringify(productos));
+listaProductos.addEventListener("click",(e) => {
+  if(e.target.classList.contains("editar")){
+    console.log("Hola Mundo")
+    const id = e.target.dataset.id.toString();
+    const producto = productos.find((producto) => producto.id === id);
+
+    console.log(id)
+    console.log(producto)
+    if(producto) {
+      document.getElementById("name").value = producto.nombre
+      formularioproductos.dataset.mode ="editar"
+      formularioproductos.dataset.editId = id
+    }
+  }
+})
