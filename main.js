@@ -1,9 +1,12 @@
-//Inicio script de bootstrap para validar el formulario
+
+import { arraynumeros,Numerorandom } from "./numerorandom.js";
+
+//Inicio script de bootstrap para validar el formulario 
 (() => {
   "use strict";
-
+  
   const forms = document.querySelectorAll(".needs-validation");
-
+  
   Array.from(forms).forEach((form) => {
     form.addEventListener(
       "submit",
@@ -25,6 +28,7 @@
             icon: "success",
             button: "Aww yiss!",
           });
+          Numerorandom()
           crearproducto()
           agregarproducto()
           formularioproductos.reset()
@@ -34,10 +38,11 @@
         form.classList.add("was-validated");
       },
       false
-    );
-  });
-})();
-//Fin script de bootstrap para validar el formulario
+      );
+    });
+  })();
+  //Fin script de bootstrap para validar el formulario
+
 
 let productos = []
 
@@ -56,25 +61,23 @@ function crearproducto(){
   const descripcion = codigoDescripcion.value
   const url = codigoURL.value
   const categoria = codigocategoria.value
-  const codigo = codigoInput.value
+  const codigo = arraynumeros[arraynumeros.length -1]
   const precio = codigoPrecio.value
-
+  
   const productos2 =  {codigo,nombre,precio,categoria,descripcion,url}
-
+  
   console.log(productos2)
-
+  
   productos.push(productos2)
-
+  
   console.log(productos)  
-
+  
   
 }
 
-
-
 function agregarproducto() {
   listaProductos.querySelector("tbody").innerHTML = "";
-
+  
   productos.forEach((producto) => {
     const tr = document.createElement("tr")
     tr.innerHTML = `
@@ -84,10 +87,16 @@ function agregarproducto() {
     <td>$${producto.precio}</td>
     <td>${producto.descripcion}</td>
     <td>${producto.url}</td>
+    <td>
+    <div class="col-md">
+    <button type="button" class="btn btn-outline-secondary" data-mode="editar" id="${producto.codigo}">Secondary</button>
+    </div>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    </td>
     `;
     listaProductos.querySelector("tbody").appendChild(tr)
   });
-
+  
   localStorage.setItem("productos", JSON.stringify(productos));
 }
 
@@ -97,3 +106,8 @@ if (obtenerProductos) {
   productos = JSON.parse(obtenerProductos);
   agregarproducto();
 }
+
+productos.codigo.addEventListener("click", (e) => {
+  console.log("Hola Mundo")
+})
+
