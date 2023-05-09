@@ -88,7 +88,7 @@ function agregarproducto() {
     <td>${producto.url}</td>
     <td>
     <div class="col-md">
-    <button class="editar" data-id="${producto.codigo}" data-bs-toggle="modal"
+    <button class="editar" data-codigo="${producto.codigo}" data-bs-toggle="modal"
     data-bs-target="#modal">Editar</button>
     </div>
     <button class="eliminar" class="btn btn-outline-secondary">Secondary</button>
@@ -97,7 +97,7 @@ function agregarproducto() {
     listaProductos.querySelector("tbody").appendChild(tr)
 
   });
-  
+  localStorage.setItem("productos", JSON.stringify(productos))
 }
 
 const obtenerProductos = localStorage.getItem("productos");
@@ -112,13 +112,21 @@ localStorage.setItem("productos", JSON.stringify(productos));
 listaProductos.addEventListener("click",(e) => {
   if(e.target.classList.contains("editar")){
     console.log("Hola Mundo")
-    const id = e.target.dataset.id.toString();
-    const producto = productos.find((producto) => producto.id === id);
+    const id = e.target.dataset.codigo;
+    const producto = productos.find((producto) => producto.codigo == id);
 
     console.log(id)
     console.log(producto)
     if(producto) {
+      document.getElementById("codigoProducto").value = producto.codigo
+      document.getElementById("categoria").value = producto.categoria
       document.getElementById("name").value = producto.nombre
+      document.getElementById("precio").value = producto.precio
+      document.getElementById("descripcion").value = producto.descripcion
+      document.getElementById("url").value = producto.url
+
+      localStorage.setItem("productos", JSON.stringify(productos))
+
       formularioproductos.dataset.mode ="editar"
       formularioproductos.dataset.editId = id
     }
