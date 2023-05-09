@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+.imgSesion{
+    background-image: url(../img/imgLogin2.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.body{
+    font-family: 'Lora', serif;
+}
+
