@@ -36,11 +36,10 @@ form.addEventListener("submit", (e) => {
         && valorApellido.trim().length > 2 && valorApellido.trim().length < 21) {
         let bandera = false;    
         for (let i = 1; i < arrayUsuarios.length; i++) {
-            if ((usuario.nombre == arrayUsuarios[i].nombre) && (usuario.apellido == arrayUsuarios[i].apellido)
-                && (usuario.email == arrayUsuarios[i].email)) {
-                alert("El Usuario ya está registrado");
+            if (usuario.email === arrayUsuarios[i].email) {
                 form.reset();
                 bandera = true;
+                usuarioRechazado.innerHTML = "<p>El usuario ya se encuentra registrado. Intente nuevamente</p>";
                 break;
             }
         } if (bandera === false){
@@ -50,7 +49,7 @@ form.addEventListener("submit", (e) => {
             alert("Usuario creado correctamente");
         }
     } else {
-        usuarioRechazado.innerHTML = "<p>El usuario ya existe o alguno de los campos es incorrecto. Intente nuevamente</p>";
+        usuarioRechazado.innerHTML = "<p>Alguno de los campos es incorrecto. Intente nuevamente</p>";
         form.reset();
     }
     console.log(usuario);
