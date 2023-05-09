@@ -50,6 +50,7 @@ h2{
 transform: 
 perspective(200px)
 rotateX(5deg);
+
 }
 .article::before{
     content: '';
