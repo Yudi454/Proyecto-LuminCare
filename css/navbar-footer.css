@@ -49,3 +49,8 @@ footer .list-unstyled li a{
 .list-unstyled li a:hover {
     color: #fff
 }
+
+/* ######## */
+#dropdown-usuario{
+    display: none;
+}
