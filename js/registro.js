@@ -47,10 +47,10 @@ form.addEventListener("submit", (e) => {
       }
     }
     if (bandera === false) {
+      alert("Usuario creado correctamente");
       arrayUsuarios.push(usuario);
       localStorage.setItem("usuarios", JSON.stringify(arrayUsuarios));
       form.reset();
-      alert("Usuario creado correctamente");
     }
   } else {
     usuarioRechazado.innerHTML =
