@@ -52,5 +52,4 @@ form.addEventListener("submit", (e) => {
         usuarioRechazado.innerHTML = "<p>Alguno de los campos es incorrecto. Intente nuevamente</p>";
         form.reset();
     }
-    console.log(usuario);
 });
