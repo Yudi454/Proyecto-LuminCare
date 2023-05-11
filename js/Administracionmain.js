@@ -60,18 +60,38 @@ function crearproducto(){
   const descripcion = codigoDescripcion.value
   const url = codigoURL.value
   const categoria = codigocategoria.value
-  const codigo = arraynumeros[arraynumeros.length -1]
+  let codigonumber = arraynumeros[arraynumeros.length -1]
+  let codigo = codigonumber.toString();
   const precio = codigoPrecio.value
   
+  let codigoProducto = document.getElementById("codigoProducto");
+
+  codigoProducto.disabled = false
+
+  console.log(codigoProducto.value);
+
+  if (codigoProducto.value !== "") {
+    codigo = codigoProducto.value;
+    console.log(codigo)
+  }
+
+  codigoProducto.disabled = true  
+
+
   const productos2 =  {codigo,nombre,precio,categoria,descripcion,url}
+
+  const index = productos.findIndex((producto) => producto.codigo === productos2.codigo);
   
-  console.log(productos2)
-  
-  productos.push(productos2)
-  
-  console.log(productos)  
-  
-  
+  if (productos.some((producto) => producto.codigo === productos2.codigo)){
+    productos[index] = productos2; // Actualiza el objeto en el array productos
+    localStorage.setItem('productos', JSON.stringify(productos)); // Actualiza el Local Storage
+    console.log("El producto ha sido actualizado");
+  }
+  else{
+    productos.push(productos2);
+    localStorage.setItem('productos', JSON.stringify(productos));
+    console.log("El producto ha sido agregado");
+  }
 }
 
 function agregarproducto() {
@@ -79,6 +99,7 @@ function agregarproducto() {
   
   productos.forEach((producto) => {
     const tr = document.createElement("tr")
+    tr.id = `${producto.codigo}`;
     tr.innerHTML = `
     <th scope="row">${producto.codigo}</th>
     <td>${producto.categoria}</td>
@@ -91,7 +112,7 @@ function agregarproducto() {
     <button class="editar" data-codigo="${producto.codigo}" data-bs-toggle="modal"
     data-bs-target="#modal">Editar</button>
     </div>
-    <button class="eliminar" class="btn btn-outline-secondary">Secondary</button>
+    <button class="eliminar" data-codigo="${producto.codigo}" class="btn btn-outline-secondary">Borrar</button>
     </td>
     `;
     listaProductos.querySelector("tbody").appendChild(tr)
@@ -111,12 +132,10 @@ if (obtenerProductos) {
 localStorage.setItem("productos", JSON.stringify(productos));
 listaProductos.addEventListener("click",(e) => {
   if(e.target.classList.contains("editar")){
-    console.log("Hola Mundo")
+    
     const id = e.target.dataset.codigo;
-    const producto = productos.find((producto) => producto.codigo == id);
+    const producto = productos.find((producto) => producto.codigo === id);
 
-    console.log(id)
-    console.log(producto)
     if(producto) {
       document.getElementById("codigoProducto").value = producto.codigo
       document.getElementById("categoria").value = producto.categoria
@@ -132,3 +151,36 @@ listaProductos.addEventListener("click",(e) => {
     }
   }
 })
+
+listaProductos.addEventListener("click", (e) => {
+  if(e.target.classList.contains("eliminar")){
+    const id = e.target.dataset.codigo;
+    const producto = productos.find((producto) => producto.codigo === id);
+
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        const index2 = productos.indexOf(producto)
+        if(index2 > -1){
+          productos.splice(index2,1)
+        }
+        localStorage.setItem('productos', JSON.stringify(productos));
+        const elemento = document.getElementById(id)
+        elemento.parentNode.removeChild(elemento);
+        swal("Poof! Your imaginary file has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+    console.log(producto)
+  }
+})
+
