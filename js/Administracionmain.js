@@ -68,11 +68,9 @@ function crearproducto(){
 
   codigoProducto.disabled = false
 
-  console.log(codigoProducto.value);
 
   if (codigoProducto.value !== "") {
     codigo = codigoProducto.value;
-    console.log(codigo)
   }
 
   codigoProducto.disabled = true  
