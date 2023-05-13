@@ -6,9 +6,9 @@ console.log(obtenerproductos)
 
 JSON.parse(obtenerproductos).forEach((producto) => {
     const carta = `
-    <div class="container-fluid col-md-4">
+    <div class="container-fluid col-md-4" data-item="${producto.categoria}">
     <div class="card">
-      <img src="${producto.url}" class="card-img-top" alt="...">
+      <img src="${producto.url}" class="card-img-top img-fluid" alt="...">
       <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
         <p>${producto.categoria}</p>
