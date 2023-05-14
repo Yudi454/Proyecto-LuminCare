@@ -103,7 +103,7 @@
                                         <div>
                                             <label for="name" class="form-label"> Nombre</label>
                                             <input type="text" id="name" class="form-control" required minlength="5"
-                                                maxlength="20" placeholder="Nombre" pattern="[a-zA-Z]+">
+                                                maxlength="20" placeholder="Nombre" pattern="[a-zA-Z ]+" oninput="this.value = this.value.replace(/\s+/g,' ').trim()">
                                             <div class="valid-feedback">
                                                 Todo bien.
                                             </div>
