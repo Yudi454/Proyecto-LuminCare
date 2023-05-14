@@ -14,12 +14,12 @@ let arrayUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-   
+    let i = 0;
     let valorEmail = inputEmail.value;
     let valorContraseña = inputContraseña.value;
     let bandera = false;
 
-    for(let i = 0 ; i < arrayUsuarios.length ; i++){
+    for( i = 0 ; i < arrayUsuarios.length ; i++){
         if (valorEmail === arrayUsuarios[i].email && valorContraseña === arrayUsuarios[i].contraseña){
             bandera = true;            
             break;
@@ -31,8 +31,8 @@ form.addEventListener("submit", (e) => {
         dropUsuario.style.display = 'block';
         // divIngreso.style.display = 'none';
         divRegistro.style.display = 'none';
-        dropNombre.textContent(arrayUsuarios[i].nombre);
-        dropEmail.textContent(arrayUsuarios[i].email);
+        dropNombre.textContent = arrayUsuarios[i].nombre;
+        dropEmail.textContent = arrayUsuarios[i].email;
         usuarioRechazado.innerHTML = "";
 
     } else{
