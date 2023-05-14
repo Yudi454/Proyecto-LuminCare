@@ -3,12 +3,12 @@
 const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
 
-cargarProductos();
+// cargarProductos();
 
 function cargarProductos() {
   tbody.innerHTML = "";
 
-  const productos = JSON.parse(localStorage.getItem("productos")) || [];
+  const productos = JSON.parse(localStorage.getItem("productosDeseados")) || [];
 
   productos.forEach((producto, indice) => {
     const fila = document.createElement("tr");
@@ -50,21 +50,37 @@ function cargarProductos() {
 // Paso 4: Función para eliminar un producto del localStorage
 function eliminarProducto(indice) {
   // Obtener los productos del localStorage
-  const productos = JSON.parse(localStorage.getItem("productos")) || [];
+  const productos = JSON.parse(localStorage.getItem("productosDeseados")) || [];
 
   // Eliminar el producto del arreglo por su índice
   productos.splice(indice, 1);
 
   // Actualizar el localStorage con el arreglo actualizado
-  localStorage.setItem("productos", JSON.stringify(productos));
+  localStorage.setItem("productosDeseados", JSON.stringify(productos));
 }
 
-const myModal = document.getElementById("myModal");
-const myInput = document.getElementById("myInput");
-
-myModal.addEventListener("shown.bs.modal", () => {
-  myInput.focus();
-});
-
 //
-const productosDeseados = [];
+let productos = JSON.parse(localStorage.getItem("productos"));
+// console.log(productos);
+let productosDeseados = [];
+
+let cartaProducto = document.getElementById("cartas");
+cartaProducto.addEventListener("click", (e) => {
+  if (e.target.classList.contains("botonAgregar")) {
+    const id = e.target.dataset.id;
+    console.log(id);
+
+    const productoDeseado = productos.find(
+      (producto) => producto.codigo === id
+    );
+    console.log(productoDeseado);
+
+    productosDeseados.push(productoDeseado);
+
+    localStorage.setItem(
+      "productosDeseados",
+      JSON.stringify(productosDeseados)
+    ); //
+    cargarProductos();
+  }
+});
