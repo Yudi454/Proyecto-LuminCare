@@ -29,10 +29,6 @@ function cargarProductos() {
     columnaPrecio.textContent = producto.precio;
     fila.appendChild(columnaPrecio);
 
-    // const columnaDescripcion = document.createElement("td");
-    // columnaDescripcion.textContent = producto.descripcion;
-    // fila.appendChild(columnaDescripcion);
-
     const columnaAcciones = document.createElement("td");
     const botonEliminar = document.createElement("button");
     botonEliminar.textContent = "Eliminar";
@@ -47,21 +43,17 @@ function cargarProductos() {
   });
 }
 
-// Paso 4: Función para eliminar un producto del localStorage
+// Función para eliminar un producto del localStorage
 function eliminarProducto(indice) {
-  // Obtener los productos del localStorage
   const productos = JSON.parse(localStorage.getItem("productosDeseados")) || [];
 
-  // Eliminar el producto del arreglo por su índice
   productos.splice(indice, 1);
 
-  // Actualizar el localStorage con el arreglo actualizado
   localStorage.setItem("productosDeseados", JSON.stringify(productos));
 }
 
 //
 let productos = JSON.parse(localStorage.getItem("productos"));
-// console.log(productos);
 let productosDeseados = [];
 
 let cartaProducto = document.getElementById("cartas");
@@ -80,7 +72,7 @@ cartaProducto.addEventListener("click", (e) => {
     localStorage.setItem(
       "productosDeseados",
       JSON.stringify(productosDeseados)
-    ); //
+    );
     cargarProductos();
   }
 });
