@@ -19,9 +19,12 @@
     justify-content: center;
 }
 
-th, td {
-    white-space: nowrap;
-}
+
+
+td {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
 
 .tables{
     margin: 4vh;

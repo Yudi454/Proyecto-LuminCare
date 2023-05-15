@@ -63,7 +63,7 @@
                                         <div>
                                             <label for="name" class="form-label"> Nombre</label>
                                             <input type="text" id="name" class="form-control" required minlength="5"
-                                                maxlength="20" placeholder="Nombre" pattern="[a-zA-Z]+">
+                                                maxlength="20" placeholder="Nombre" pattern="[a-zA-Z]+(\s[a-zA-Z]+)?">
                                             <div class="valid-feedback">
                                                 Todo bien.
                                             </div>
@@ -105,6 +105,10 @@
                                                 Debes poner un URL dentro del espacio vacio.
                                             </div>
                                         </div>
+                                        <div>
+                                            <label for="url2" class="form-label">Animacion para card por URL</label>
+                                            <input type="text" id="url2" class="form-control" placeholder="URL de una segunda imagen para la animacion">
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
@@ -132,6 +136,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Descripcion</th>
+                                <th scope="col">URL</th>
                                 <th scope="col">URL</th>
                                 <th scope="col">Acciones</th>
                             </tr>
