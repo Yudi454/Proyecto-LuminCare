@@ -3,7 +3,7 @@
 const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
 
-// cargarProductos();
+cargarProductos();
 
 function cargarProductos() {
   tbody.innerHTML = "";
