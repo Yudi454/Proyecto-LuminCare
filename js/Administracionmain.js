@@ -1,12 +1,11 @@
+import { arraynumeros, Numerorandom } from "./numerorandom.js";
 
-import { arraynumeros,Numerorandom } from "./numerorandom.js";
-
-//Inicio script de bootstrap para validar el formulario 
+//Inicio script de bootstrap para validar el formulario
 (() => {
   "use strict";
-  
+
   const forms = document.querySelectorAll(".needs-validation");
-  
+
   Array.from(forms).forEach((form) => {
     form.addEventListener(
       "submit",
@@ -20,77 +19,82 @@ import { arraynumeros,Numerorandom } from "./numerorandom.js";
               event.preventDefault();
             });
         } else {
-          event.preventDefault(); 
+          event.preventDefault();
           //Inicio alerta de sweet alert
           swal({
-            title: "Good job!",
-            text: "You clicked the button!",
+            title: "Producto Cargado",
+            text: "Su producto fue cargado exitosamente",
             icon: "success",
-            button: "Aww yiss!",
+            button: "ok",
           });
-          Numerorandom()
-          crearproducto()
-          agregarproducto()
-          formularioproductos.reset()
+          Numerorandom();
+          crearproducto();
+          agregarproducto();
+          formularioproductos.reset();
           //Fin alerta de sweet alert
         }
 
         form.classList.add("was-validated");
       },
       false
-      );
-    });
-  })();
-  //Fin script de bootstrap para validar el formulario
+    );
+  });
+})();
+//Fin script de bootstrap para validar el formulario
 
-
-let productos = []
+let productos = [];
 
 const listaProductos = document.getElementById("listadeproductos");
-let codigocategoria = document.getElementById("categoria")
+let codigocategoria = document.getElementById("categoria");
 let codigoNombre = document.getElementById("name");
-let codigoPrecio = document.getElementById("precio")
+let codigoPrecio = document.getElementById("precio");
 let codigoDescripcion = document.getElementById("descripcion");
 let codigoURL = document.getElementById("url");
-let codigoURL2 = document.getElementById("url2")
-let formularioproductos = document.getElementById("id-form")
-let cerrarmodal = document.getElementById("cerrarModal")
+let codigoURL2 = document.getElementById("url2");
+let formularioproductos = document.getElementById("id-form");
 
-function crearproducto(){
-  const nombre = codigoNombre.value
-  const descripcion = codigoDescripcion.value
-  const url = codigoURL.value
-  const url2 = codigoURL2.value
-  const categoria = codigocategoria.value
-  let codigonumber = arraynumeros[arraynumeros.length -1]
+
+function crearproducto() {
+  const nombre = codigoNombre.value;
+  const descripcion = codigoDescripcion.value;
+  const url = codigoURL.value;
+  const url2 = codigoURL2.value;
+  const categoria = codigocategoria.value;
+  let codigonumber = arraynumeros[arraynumeros.length - 1];
   let codigo = codigonumber.toString();
-  const precio = codigoPrecio.value
-  
+  const precio = codigoPrecio.value;
+
   let codigoProducto = document.getElementById("codigoProducto");
 
-  codigoProducto.disabled = false
-
+  codigoProducto.disabled = false;
 
   if (codigoProducto.value !== "") {
     codigo = codigoProducto.value;
   }
 
-  codigoProducto.disabled = true  
+  codigoProducto.disabled = true;
 
+  const productos2 = {
+    codigo,
+    nombre,
+    precio,
+    categoria,
+    descripcion,
+    url,
+    url2,
+  };
 
-  const productos2 =  {codigo,nombre,precio,categoria,descripcion,url,url2}
+  const index = productos.findIndex(
+    (producto) => producto.codigo === productos2.codigo
+  );
 
-  const index = productos.findIndex((producto) => producto.codigo === productos2.codigo);
-  
-  if (productos.some((producto) => producto.codigo === productos2.codigo)){
+  if (productos.some((producto) => producto.codigo === productos2.codigo)) {
     productos[index] = productos2; // Actualiza el objeto en el array productos
-    localStorage.setItem('productos', JSON.stringify(productos)); // Actualiza el Local Storage
+    localStorage.setItem("productos", JSON.stringify(productos)); // Actualiza el Local Storage
     console.log("El producto ha sido actualizado");
-    
-  }
-  else{
+  } else {
     productos.push(productos2);
-    localStorage.setItem('productos', JSON.stringify(productos));
+    localStorage.setItem("productos", JSON.stringify(productos));
     console.log("El producto ha sido agregado");
   }
   const formulario = document.getElementById("id-form");
@@ -101,9 +105,9 @@ function crearproducto(){
 
 function agregarproducto() {
   listaProductos.querySelector("tbody").innerHTML = "";
-  
+
   productos.forEach((producto) => {
-    const tr = document.createElement("tr")
+    const tr = document.createElement("tr");
     tr.id = `${producto.codigo}`;
     tr.innerHTML = `
     <th scope="row">${producto.codigo}</th>
@@ -121,10 +125,9 @@ function agregarproducto() {
     <button class="eliminar" data-codigo="${producto.codigo}" class="btn btn-outline-secondary">Borrar</button>
     </td>
     `;
-    listaProductos.querySelector("tbody").appendChild(tr)
-
+    listaProductos.querySelector("tbody").appendChild(tr);
   });
-  localStorage.setItem("productos", JSON.stringify(productos))
+  localStorage.setItem("productos", JSON.stringify(productos));
 }
 
 const obtenerProductos = localStorage.getItem("productos");
@@ -134,60 +137,56 @@ if (obtenerProductos) {
   agregarproducto();
 }
 
-
 localStorage.setItem("productos", JSON.stringify(productos));
-listaProductos.addEventListener("click",(e) => {
-  if(e.target.classList.contains("editar")){
-    
+listaProductos.addEventListener("click", (e) => {
+  if (e.target.classList.contains("editar")) {
     const id = e.target.dataset.codigo;
     const producto = productos.find((producto) => producto.codigo === id);
 
-    if(producto) {
-      document.getElementById("codigoProducto").value = producto.codigo
-      document.getElementById("categoria").value = producto.categoria
-      document.getElementById("name").value = producto.nombre
-      document.getElementById("precio").value = producto.precio
-      document.getElementById("descripcion").value = producto.descripcion
-      document.getElementById("url").value = producto.url
-      document.getElementById("url2").value = producto.url2
+    if (producto) {
+      document.getElementById("codigoProducto").value = producto.codigo;
+      document.getElementById("categoria").value = producto.categoria;
+      document.getElementById("name").value = producto.nombre;
+      document.getElementById("precio").value = producto.precio;
+      document.getElementById("descripcion").value = producto.descripcion;
+      document.getElementById("url").value = producto.url;
+      document.getElementById("url2").value = producto.url2;
 
-      localStorage.setItem("productos", JSON.stringify(productos))
+      localStorage.setItem("productos", JSON.stringify(productos));
 
-      formularioproductos.dataset.mode ="editar"
-      formularioproductos.dataset.editId = id
+      formularioproductos.dataset.mode = "editar";
+      formularioproductos.dataset.editId = id;
     }
   }
-})
+});
 
 listaProductos.addEventListener("click", (e) => {
-  if(e.target.classList.contains("eliminar")){
+  if (e.target.classList.contains("eliminar")) {
     const id = e.target.dataset.codigo;
     const producto = productos.find((producto) => producto.codigo === id);
 
     swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
+      title: "Está seguro de que desea borrar este producto?",
+      text: "Una vez borrado no puede recuperarlo",
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    })
-    .then((willDelete) => {
+    }).then((willDelete) => {
       if (willDelete) {
-        const index2 = productos.indexOf(producto)
-        if(index2 > -1){
-          productos.splice(index2,1)
+        const index2 = productos.indexOf(producto);
+        if (index2 > -1) {
+          productos.splice(index2, 1);
         }
-        localStorage.setItem('productos', JSON.stringify(productos));
-        const elemento = document.getElementById(id)
+        localStorage.setItem("productos", JSON.stringify(productos));
+        const elemento = document.getElementById(id);
         elemento.parentNode.removeChild(elemento);
-        swal("Poof! Your imaginary file has been deleted!", {
+        swal("El producto fue eliminado exitosamente", {
           icon: "success",
         });
       } else {
-        swal("Your imaginary file is safe!");
+        swal("El producto no fue eliminado");
       }
     });
-    console.log(producto)
+    console.log(producto);
   }
-})
-
+});

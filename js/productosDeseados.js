@@ -1,5 +1,3 @@
-// tabla
-
 const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
 
@@ -33,8 +31,24 @@ function cargarProductos() {
     const botonEliminar = document.createElement("button");
     botonEliminar.textContent = "Eliminar";
     botonEliminar.addEventListener("click", () => {
-      eliminarProducto(indice);
-      cargarProductos(); // Recargar la tabla después de eliminar el producto
+      event.preventDefault()
+      swal({
+        title: "Está seguro de que desea borrar este producto?",
+        text: "Una vez borrado no puede recuperarlo",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          eliminarProducto(indice);
+          cargarProductos(); // Recargar la tabla después de eliminar el producto
+          swal("El producto fue eliminado exitosamente", {
+            icon: "success",
+          });
+        } else {
+          swal("El producto no fue eliminado");
+        }
+      });
     });
     columnaAcciones.appendChild(botonEliminar);
     fila.appendChild(columnaAcciones);
@@ -42,6 +56,7 @@ function cargarProductos() {
     tbody.appendChild(fila);
   });
 }
+
 
 // Función para eliminar un producto del localStorage
 function eliminarProducto(indice) {
@@ -76,3 +91,4 @@ cartaProducto.addEventListener("click", (e) => {
     cargarProductos();
   }
 });
+
