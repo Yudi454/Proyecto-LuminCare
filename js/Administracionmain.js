@@ -54,7 +54,7 @@ let codigoDescripcion = document.getElementById("descripcion");
 let codigoURL = document.getElementById("url");
 let codigoURL2 = document.getElementById("url2")
 let formularioproductos = document.getElementById("id-form")
-
+let cerrarmodal = document.getElementById("cerrarModal")
 
 function crearproducto(){
   const nombre = codigoNombre.value
@@ -86,12 +86,17 @@ function crearproducto(){
     productos[index] = productos2; // Actualiza el objeto en el array productos
     localStorage.setItem('productos', JSON.stringify(productos)); // Actualiza el Local Storage
     console.log("El producto ha sido actualizado");
+    
   }
   else{
     productos.push(productos2);
     localStorage.setItem('productos', JSON.stringify(productos));
     console.log("El producto ha sido agregado");
   }
+  const formulario = document.getElementById("id-form");
+
+  const modal = bootstrap.Modal.getInstance(formulario.closest(".modal"));
+  modal.hide();
 }
 
 function agregarproducto() {
