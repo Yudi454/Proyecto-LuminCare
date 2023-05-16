@@ -46,7 +46,7 @@ let productos = [];
 
 const listaProductos = document.getElementById("listadeproductos");
 let codigocategoria = document.getElementById("categoria");
-let codigoNombre = document.getElementById("name");
+let codigoNombre = document.getElementById("nombreProducto");
 let codigoPrecio = document.getElementById("precio");
 let codigoDescripcion = document.getElementById("descripcion");
 let codigoURL = document.getElementById("url");
@@ -146,7 +146,7 @@ listaProductos.addEventListener("click", (e) => {
     if (producto) {
       document.getElementById("codigoProducto").value = producto.codigo;
       document.getElementById("categoria").value = producto.categoria;
-      document.getElementById("name").value = producto.nombre;
+      document.getElementById("nombreProducto").value = producto.nombre;
       document.getElementById("precio").value = producto.precio;
       document.getElementById("descripcion").value = producto.descripcion;
       document.getElementById("url").value = producto.url;

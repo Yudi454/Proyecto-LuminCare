@@ -1,5 +1,5 @@
 
-const inputEmail = document.getElementById("email");
+const inputEmail = document.getElementById("correo");
 const inputContraseña = document.getElementById("password");
 const form = document.querySelector("form");
 const usuarioRechazado = document.getElementById("usuarioRechazado");
@@ -7,7 +7,7 @@ const divIngreso = document.getElementById("btn-ingreso")
 const divRegistro =  document.getElementById("btn-registro")
 const dropUsuario = document.getElementById("dropdown-usuario")
 const dropNombre = document.getElementById("drop-nombre")
-const dropEmail = document.getElementById("drop-email")
+const dropEmail = document.getElementById("drop-correo")
 
 
 let arrayUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
