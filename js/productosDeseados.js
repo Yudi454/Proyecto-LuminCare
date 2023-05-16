@@ -8,6 +8,13 @@ function cargarProductos() {
 
   const productos = JSON.parse(localStorage.getItem("productosDeseados")) || [];
 
+  
+  if(productos.length === 0){
+    const textoSinProductos = document.createElement("p")
+    textoSinProductos.innerHTML = "No tiene Productos Deseados"
+    textoSinProductos.classList = "mt-2"
+    tbody.appendChild(textoSinProductos)
+  } else {
   productos.forEach((producto, indice) => {
     const fila = document.createElement("tr");
 
@@ -54,7 +61,8 @@ function cargarProductos() {
     fila.appendChild(columnaAcciones);
 
     tbody.appendChild(fila);
-  });
+  })};
+
 }
 
 
@@ -75,12 +83,10 @@ let cartaProducto = document.getElementById("cartas");
 cartaProducto.addEventListener("click", (e) => {
   if (e.target.classList.contains("botonAgregar")) {
     const id = e.target.dataset.id;
-    console.log(id);
 
     const productoDeseado = productos.find(
       (producto) => producto.codigo === id
     );
-    console.log(productoDeseado);
 
     productosDeseados.push(productoDeseado);
 
