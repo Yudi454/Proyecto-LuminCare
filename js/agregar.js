@@ -18,3 +18,4 @@ JSON.parse(obtenerproductos).forEach((producto) => {
     `;
   cartas.innerHTML += carta;
 });
+
