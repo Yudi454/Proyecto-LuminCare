@@ -1,5 +1,6 @@
 const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
+const botonComprar = document.getElementById("boton-comprar")
 
 cargarProductos();
 
@@ -15,6 +16,7 @@ function cargarProductos() {
     textoSinProductos.classList = "mt-2"
     tbody.appendChild(textoSinProductos)
   } else {
+  botonComprar.href = "./html/404.html"
   productos.forEach((producto, indice) => {
     const fila = document.createElement("tr");
 
@@ -47,6 +49,7 @@ function cargarProductos() {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
+          botonComprar.removeAttribute("href");
           eliminarProducto(indice);
           cargarProductos(); // Recargar la tabla después de eliminar el producto
           swal("El producto fue eliminado exitosamente", {
