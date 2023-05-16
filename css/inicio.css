@@ -1,6 +1,4 @@
-body{
-border: 0.7em solid rgb(148, 173, 196);
-}
+
 h2{
     text-align: center;
     margin: 1em;
@@ -74,7 +72,10 @@ rotateX(5deg);
 .publicidadImg{max-height: 7rem; max-width: 100%;}
 
 /* catalogo */
-.productosImg{max-height: 15rem;}
+.productosImg{
+    max-height: 15rem;
+    height: 100%;
+}
 .contenedorImg{transition: all .3s ease;}
 
 /*Transicion de imagenes-productos*/
@@ -114,7 +115,6 @@ rotateX(5deg);
 }
 .contenedorImg:hover::before{opacity: 1;}
 .contenedorImg:hover img:last-child{opacity: 1;}
-.contenedorBtnComprar{opacity: 0;}
 .card:hover .contenedorBtnComprar {opacity: 1;}
 /*FIN Transicion de imagenes-productos*/
 
@@ -137,11 +137,14 @@ rotateX(5deg);
 
   }
 
-p{font-size: xx-large;}
   
   hr#linea {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid rgb(60, 9, 9);
+  }
+
+  .botonAgregar{
+    background: #40514E !important;
   }

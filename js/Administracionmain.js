@@ -52,6 +52,7 @@ let codigoNombre = document.getElementById("name");
 let codigoPrecio = document.getElementById("precio")
 let codigoDescripcion = document.getElementById("descripcion");
 let codigoURL = document.getElementById("url");
+let codigoURL2 = document.getElementById("url2")
 let formularioproductos = document.getElementById("id-form")
 
 
@@ -59,6 +60,7 @@ function crearproducto(){
   const nombre = codigoNombre.value
   const descripcion = codigoDescripcion.value
   const url = codigoURL.value
+  const url2 = codigoURL2.value
   const categoria = codigocategoria.value
   let codigonumber = arraynumeros[arraynumeros.length -1]
   let codigo = codigonumber.toString();
@@ -68,17 +70,15 @@ function crearproducto(){
 
   codigoProducto.disabled = false
 
-  console.log(codigoProducto.value);
 
   if (codigoProducto.value !== "") {
     codigo = codigoProducto.value;
-    console.log(codigo)
   }
 
   codigoProducto.disabled = true  
 
 
-  const productos2 =  {codigo,nombre,precio,categoria,descripcion,url}
+  const productos2 =  {codigo,nombre,precio,categoria,descripcion,url,url2}
 
   const index = productos.findIndex((producto) => producto.codigo === productos2.codigo);
   
@@ -107,6 +107,7 @@ function agregarproducto() {
     <td>$${producto.precio}</td>
     <td>${producto.descripcion}</td>
     <td>${producto.url}</td>
+    <td>${producto.url2}</td>
     <td>
     <div class="col-md">
     <button class="editar" data-codigo="${producto.codigo}" data-bs-toggle="modal"
@@ -143,6 +144,7 @@ listaProductos.addEventListener("click",(e) => {
       document.getElementById("precio").value = producto.precio
       document.getElementById("descripcion").value = producto.descripcion
       document.getElementById("url").value = producto.url
+      document.getElementById("url2").value = producto.url2
 
       localStorage.setItem("productos", JSON.stringify(productos))
 
