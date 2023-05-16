@@ -2,8 +2,11 @@ const inputNombre = document.getElementById("name");
 const inputApellido = document.getElementById("surname");
 const inputEmail = document.getElementById("email");
 const inputContraseña = document.getElementById("password");
+const inputContraseña2 = document.getElementById("password2");
 const form = document.querySelector("form");
 const usuarioRechazado = document.getElementById("usuarioRechazado");
+const contrasenaRepetida = document.getElementById("contrasenaRepetida")
+ 
 
 const admin = {
   nombre: "admin",
@@ -35,14 +38,24 @@ form.addEventListener("submit", (e) => {
     valorNombre.trim().length < 21 &&
     valorApellido.trim().length > 2 &&
     valorApellido.trim().length < 21
-  ) {
+  )
+  
+  
+  {
     let bandera = false;
-    for (let i = 1; i < arrayUsuarios.length; i++) {
-      if (usuario.email === arrayUsuarios[i].email) {
+    
+    if(inputContraseña2.value !== inputContraseña.value){
+      bandera = true
+      contrasenaRepetida.innerHTML =
+      "<p>La contraseñas no coinciden</p>"
+      } 
+      else{
+      for (let i = 1; i < arrayUsuarios.length; i++) {
+        if (usuario.email === arrayUsuarios[i].email) {
         form.reset();
         bandera = true;
         usuarioRechazado.innerHTML =
-          "<p>El usuario ya se encuentra registrado. Intente nuevamente</p>";
+        "<p>El usuario ya se encuentra registrado. Intente nuevamente</p>";
         break;
       }
     }
@@ -52,10 +65,9 @@ form.addEventListener("submit", (e) => {
       localStorage.setItem("usuarios", JSON.stringify(arrayUsuarios));
       form.reset();
     }
-  } else {
-    usuarioRechazado.innerHTML =
-      "<p>Alguno de los campos es incorrecto. Intente nuevamente</p>";
-    form.reset();
+  } if (bandera){
+    form.reset()
   }
   console.log(usuario);
-});
+ 
+}});

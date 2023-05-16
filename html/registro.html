@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro | LuminCare</title>
   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
   <!-- Custom CSS -->
@@ -107,6 +108,13 @@
               mayúscula.</small>
           </div>
           <div class="mb-1">
+            <label for="password" class="form-label">Repetir Contraseña</label>
+            <input type="password" class="form-control" id="password2"
+              pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" required minlength="8" maxlength="16" />
+            <small class="text-secondary">La contraseña debe de ser identica a la anterior</small>
+          </div>
+          <div class="mt-1 text-center text-danger" id="contrasenaRepetida"></div>
+          <div class="mb-1">
             <input type="checkbox" class="form-check-input" id="connected" required />
             <label for="connected" class="form-check-label"><small>Acepto términos y condiciones.
                 <a href="../html/404.html">Ver</a></small></label>
@@ -155,6 +163,60 @@
     </div>
   </div>
   <!-- FIN REGISTRO -->
+
+   <!-- INICIO FOOTER -->
+   <footer class="text-white footer">
+    <div class="container py-4">
+      <div class="row">
+        <!-- Navegación -->
+        <div class="col-md-3 col-sm-6 d-flex flex-column align-items-center">
+          <h5 class="mb-3">Navegación</h5>
+          <ul class="list-unstyled">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="./404.html">Categorías</a></li>
+            <li><a href="./404.html">Políticas de privacidad</a></li>
+          </ul>
+        </div>
+        <!-- Tienda -->
+        <div class="col-md-3 col-sm-6 d-flex flex-column align-items-center">
+          <h5 class="mb-3">Tienda</h5>
+          <ul class="list-unstyled">
+            <li><a href="./404.html">Productos</a></li>
+            <li><a href="./404.html">Ofertas</a></li>
+            <li><a href="./404.html">Envío</a></li>
+          </ul>
+        </div>
+        <!-- Métodos de pago -->
+        <div class="col-md-3 col-sm-6 d-flex flex-column align-items-center">
+          <h5 class="mb-3">Métodos de pago</h5>
+          <ul class="list-unstyled">
+            <li><i class="fab fa-cc-visa"></i> Visa</li>
+            <li><i class="fab fa-cc-mastercard"></i> Mastercard</li>
+            <li><i class="fab fa-cc-paypal"></i> PayPal</li>
+            <li><i class="fab fa-cc-amazon-pay"></i> Amazon Pay</li>
+          </ul>
+        </div>
+        <!-- Redes sociales -->
+        <div class="col-md-3 col-sm-6 d-flex flex-column align-items-center">
+          <h5 class="mb-3">Redes sociales</h5>
+          <div class="row">
+            <div class="col-6 w-auto">
+              <ul class="list-unstyled">
+                <li class="w-auto"><i class="fab fa-facebook"></i></li>
+                <li class="w-auto"><i class="fab fa-twitter"></i></li>
+              </ul>
+            </div>
+            <div class="col-6 w-auto">
+              <ul class="list-unstyled">
+                <li><i class="fab fa-instagram"></i></li>
+                <li><i class="fab fa-linkedin"></i></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Bootstrap JS -->
   <script src="../js/registro.js"></script>
