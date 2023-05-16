@@ -65,9 +65,7 @@ form.addEventListener("submit", (e) => {
       localStorage.setItem("usuarios", JSON.stringify(arrayUsuarios));
       form.reset();
     }
-  } if (bandera){
-    form.reset()
-  }
+  } 
   console.log(usuario);
  
 }});
