@@ -10,7 +10,7 @@ else{
     dropUsuario.style.display = 'block';
     botonRegistro.style.display = 'none'; 
     botonIngreso.style.display = 'none';
-    liAdministracion.style.display = 'block';
+
 
 }
 
