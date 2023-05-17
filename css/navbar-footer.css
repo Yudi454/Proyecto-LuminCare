@@ -1,0 +1,65 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.navbar{
+    background-color:  #11999E;
+}
+.nav-item a{
+    color: white;
+}
+
+button.navbar-toggler{
+    border-color: white;
+}
+
+#menuBurger{
+    color: white;
+    border-color: white;
+}
+
+svg{
+    height: 20px;
+    width: 20px;
+}
+.icon-desiredProducts {
+    color: #fff !important
+}
+.icon-desiredProducts:hover {
+    color: #252525 !important
+}
+#carrito{
+    width: 50px;
+    height:40px;
+}
+
+footer .listaSinEstilos li a{
+    text-decoration: none;
+}
+
+.footer{
+   
+    background-color: #40514E !important;
+}
+
+.listaSinEstilos li a {
+    text-decoration: none;
+    color: #c4c4c4;
+    transition: all 200ms ease;
+}
+.listaSinEstilos li a:hover {
+    color: #fff
+}
+
+#dropdown-usuario{
+    display: none;
+}
+#divRegistro{
+    display: block;
+}
+#divIngreso{
+    display: block;
+}
+#li-Administracion{
+    display: none;
+
+}
