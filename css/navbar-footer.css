@@ -54,3 +54,13 @@ footer .listaSinEstilos li a{
 #dropdown-usuario{
     display: none;
 }
+#divRegistro{
+    display: block;
+}
+#divIngreso{
+    display: block;
+}
+#li-Administracion{
+    display: none;
+
+}
