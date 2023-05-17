@@ -92,11 +92,11 @@
         <form action="#" class="needs-validation">
           <div class="mb-4">
             <label for="nombreusuario" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombreusuario" required maxlength="20" minlength="3" />
+            <input type="text" class="form-control" id="nombreusuario" required maxlength="20" minlength="3" pattern="^[A-Za-z]+$" />
           </div>
           <div class="mb-4">
             <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="apellido" required maxlength="20" minlength="3" />
+            <input type="text" class="form-control" id="apellido" required maxlength="20" minlength="3" pattern="^[A-Za-z]+$" />
           </div>
           <div class="mb-4">
             <label for="correo" class="form-label">Correo electrónico</label>

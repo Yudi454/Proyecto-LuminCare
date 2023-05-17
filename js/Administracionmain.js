@@ -10,7 +10,7 @@ import { arraynumeros, Numerorandom } from "./numerorandom.js";
     form.addEventListener(
       "submit",
       (event) => {
-        if (!form.checkValidity()) {
+        if ( !form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
           document
@@ -52,6 +52,33 @@ let codigoDescripcion = document.getElementById("descripcion");
 let codigoURL = document.getElementById("url");
 let codigoURL2 = document.getElementById("url2");
 let formularioproductos = document.getElementById("id-form");
+
+
+formularioproductos.addEventListener("input", function() {
+  const valorNombre = codigoNombre.value.trim();
+  const valorPrecio = codigoPrecio.value.trim()
+  const valorDescripcion = codigoDescripcion.value.trim()
+  const patronLetras = /^[a-zA-Z]+(\s[a-zA-Z]+)?$/;
+  const patronNumeros = /^[0-9]*$/
+
+  if (valorNombre.length < 5 || valorNombre.length > 20 || !patronLetras.test(valorNombre)) {
+    codigoNombre.setCustomValidity("El nombre debe tener al menos 5 caracteres");
+  } else {
+    codigoNombre.setCustomValidity("");
+  }
+  
+  if(valorPrecio.length < 1 || valorPrecio.length > 12 || !patronNumeros.test(valorPrecio)){
+    codigoPrecio.setCustomValidity("a")
+  } else {
+    codigoPrecio.setCustomValidity("")
+  }
+  if(valorDescripcion.length <25 || valorDescripcion.length > 200){
+    codigoDescripcion.setCustomValidity("a")
+  } else{
+    codigoDescripcion.setCustomValidity("")
+  }
+});
+
 
 
 function crearproducto() {
@@ -191,7 +218,7 @@ listaProductos.addEventListener("click", (e) => {
 });
 
 const obtenerUsuarios = JSON.parse(localStorage.getItem("usuarios"))
-console.log(obtenerUsuarios)
+
 
 const tablaUsuarios = document.getElementById("tablaUsuarios")
 
