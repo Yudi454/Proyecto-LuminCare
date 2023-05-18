@@ -146,10 +146,10 @@ function agregarproducto() {
     <td>${producto.url2}</td>
     <td>
     <div class="col-md">
-    <button class="editar" data-codigo="${producto.codigo}" data-bs-toggle="modal"
+    <button class="btn btn-outline-secondary editar" data-codigo="${producto.codigo}" data-bs-toggle="modal"
     data-bs-target="#modal">Editar</button>
     </div>
-    <button class="eliminar" data-codigo="${producto.codigo}" class="btn btn-outline-secondary">Borrar</button>
+    <button class="btn btn-outline-secondary eliminar mt-2" data-codigo="${producto.codigo}" class="btn btn-outline-secondary">Borrar</button>
     </td>
     `;
     listaProductos.querySelector("tbody").appendChild(tr);

@@ -2,6 +2,8 @@
 
 const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
+const botonAgregar = document.querySelector(".botonAgregar");
+const iconoEstrella = botonAgregar.querySelector("i.fa-star");
 
 cargarProductos();
 
@@ -31,10 +33,27 @@ function cargarProductos() {
 
     const columnaAcciones = document.createElement("td");
     const botonEliminar = document.createElement("button");
+    botonEliminar.classList = "btn btn-outline-secondary"
     botonEliminar.textContent = "Eliminar";
     botonEliminar.addEventListener("click", () => {
-      eliminarProducto(indice);
-      cargarProductos(); // Recargar la tabla después de eliminar el producto
+      swal({
+        title: "Está seguro de que desea borrar este producto?",
+        text: "Una vez borrado no puede recuperarlo",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          
+          eliminarProducto(indice);
+          cargarProductos(); // Recargar la tabla después de eliminar el producto
+          swal("El producto fue eliminado exitosamente", {
+            icon: "success",
+          });
+        } else {
+          swal("El producto no fue eliminado");
+        }
+      });
     });
     columnaAcciones.appendChild(botonEliminar);
     fila.appendChild(columnaAcciones);
@@ -74,3 +93,10 @@ cartaProducto.addEventListener("click", (e) => {
     cargarProductos();
   }
 });
+
+iconoEstrella.addEventListener("click" , (event) => {
+    
+  const botonPadre = event.currentTarget.closest(".botonAgregar");
+  botonPadre.click();
+
+})
