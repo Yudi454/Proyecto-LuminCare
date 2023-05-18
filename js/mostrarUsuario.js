@@ -15,15 +15,18 @@ if (usuarios && usuarios.length > 0) {
 
 if (usuarioAdmin && usuariosLogeado && usuariosLogeado.length > 0) {
   let usuario = usuariosLogeado[0];
-  
-  if (usuarioAdmin.email === usuario.email && usuarioAdmin.contraseña === usuario.contraseña) {
-    liAdministracion.style.display = 'block';
+
+  if (
+    usuarioAdmin.email === usuario.email &&
+    usuarioAdmin.contraseña === usuario.contraseña
+  ) {
+    liAdministracion.style.display = "block";
   }
-  
-  botonIngreso.style.display = 'none';
-  botonRegistro.style.display = 'none';
-  dropUsuario.style.display = 'block';
-  
+
+  botonIngreso.style.display = "none";
+  botonRegistro.style.display = "none";
+  dropUsuario.style.display = "block";
+
   dropNombre.textContent = usuario.nombre;
   dropEmail.textContent = usuario.email;
 }

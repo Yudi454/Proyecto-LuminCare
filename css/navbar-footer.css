@@ -21,6 +21,10 @@ svg{
     height: 20px;
     width: 20px;
 }
+
+.prod-deseados svg:hover {
+    color: #252525;
+}
 .icon-desiredProducts {
     color: #fff !important
 }
@@ -36,12 +40,13 @@ footer .listaSinEstilos li a{
     text-decoration: none;
 }
 
-.footer{
-   
+.footer{   
     background-color: #40514E !important;
 }
-
-.listaSinEstilos li a {
+.listaSinEstilos li {
+    list-style: none;
+}
+.listaSinEstilos li a {    
     text-decoration: none;
     color: #c4c4c4;
     transition: all 200ms ease;
