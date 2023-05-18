@@ -39,7 +39,7 @@ import { arraynumeros, Numerorandom } from "./numerorandom.js";
       false
     );
   });
-})();
+});
 //Fin script de bootstrap para validar el formulario
 
 let productos = [];

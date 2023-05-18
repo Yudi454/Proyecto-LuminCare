@@ -154,10 +154,8 @@ rotateX(5deg);
   .botonAgregar{
     background: #40514E !important;
   }
-  #descripcion{
-    word-wrap: break-word !important;
+  #descripcion,#productos-item-name{
     word-break: break-all !important;
-    
   }
   .fa-sharp{
   padding: 1em;

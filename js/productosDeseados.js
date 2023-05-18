@@ -4,6 +4,7 @@ const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
 const botonAgregar = document.querySelector(".botonAgregar");
 const iconoEstrella = botonAgregar.querySelector("i.fa-star");
+ 
 
 cargarProductos();
 
@@ -12,6 +13,13 @@ function cargarProductos() {
 
   const productos = JSON.parse(localStorage.getItem("productosDeseados")) || [];
 
+  if(productos.length === 0){
+    const textoError = document.createElement("p")
+    textoError.style = "white-space: nowrap;"
+    textoError.classList ="mt-2"
+    textoError.textContent = "No tienes productos deseados"
+    tbody.appendChild(textoError)
+  } else{
   productos.forEach((producto, indice) => {
     const fila = document.createElement("tr");
 
@@ -60,6 +68,7 @@ function cargarProductos() {
 
     tbody.appendChild(fila);
   });
+  }
 }
 
 // Función para eliminar un producto del localStorage
