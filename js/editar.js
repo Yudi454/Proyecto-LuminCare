@@ -14,9 +14,10 @@ JSON.parse(obtenerproductos).forEach((producto) => {
                 <h5 class="card-title" id="productos-item-name">${producto.nombre}</h5>
                 <p id="descripcion" class="card-text">${producto.descripcion}</p>
                 <h5 class="productos-item-value">$<strong id="productos-item-price" class="font-weight-bold">${producto.precio}</strong></h5>
-            <div class="contenedorBtnComprar">
-            <button href="#" data-filter="${producto.categoria}" data-id="${producto.codigo}" class="btn btn-dark botonAgregar">
-            <i class="fa-solid fa-star" style="color: #e8d13b;"></i></button>
+                <a  data-filter="${producto.categoria}" data-id="${producto.codigo}" class="btn btn-dark botonAgregar mb-2">
+                Añadir a deseados</a>
+                
+                <div class="contenedorBtnComprar">
                 <a href="./html/404.html"
                 class="btn btn-outline-dark"
                 data-filter="${producto.categoria}">Añadir al Carrito</a>
@@ -26,46 +27,33 @@ JSON.parse(obtenerproductos).forEach((producto) => {
 </div>
     `;
   cartas.innerHTML += carta;
- 
 });
 (function () {
-  const botones = document.querySelectorAll('.btn-filter')/*Selecciona todas las clases con el nombre btn*/
-  const storeItems = document.querySelectorAll('.productos-item')/*Selecciona todas las clases con el nombre productos-item seria el contenedor de las cards*/
-  
+  const botones =
+    document.querySelectorAll(
+      ".btn-filter"
+    ); /*Selecciona todas las clases con el nombre btn*/
+  const storeItems =
+    document.querySelectorAll(
+      ".productos-item"
+    ); /*Selecciona todas las clases con el nombre productos-item seria el contenedor de las cards*/
+
   botones.forEach((boton) => {
-      boton.addEventListener('click', (e) => {
-          e.preventDefault()
-          const filter = e.target.dataset.filter
+    boton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const filter = e.target.dataset.filter;
 
-          storeItems.forEach((item) => {
-              if (filter === 'all') {
-                  item.style.display = 'block'
-              }
-              else {
-                  if(item.classList.contains(filter)){item.style.display = 'block'}
-                  else{item.style.display = 'none'}
-              }
-          })
-      })
-  })
-})();
-
-(function () {
-  const searchBox = document.querySelector('#search-item')
-  const storeItems = document.querySelectorAll('.productos-item')
-
-  searchBox.addEventListener('keyup', (e) =>{
-      
-      const searchFilter = e.target.value.toLowerCase().trim()
-
-
-      storeItems.forEach((item) =>{
-          
-          if (item.textContent.includes(searchFilter)){
-              item.style.display = 'block'
+      storeItems.forEach((item) => {
+        if (filter === "all") {
+          item.style.display = "block";
+        } else {
+          if (item.classList.contains(filter)) {
+            item.style.display = "block";
           } else {
-              item.style.display = 'none'
+            item.style.display = "none";
           }
-      })
-  })
+        }
+      });
+    });
+  });
 })();

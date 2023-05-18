@@ -1,6 +1,7 @@
+// tabla
+
 const tablaProductos = document.getElementById("tabla-productos");
 const tbody = tablaProductos.querySelector("tbody");
-const botonComprar = document.getElementById("boton-comprar")
 
 cargarProductos();
 
@@ -9,14 +10,6 @@ function cargarProductos() {
 
   const productos = JSON.parse(localStorage.getItem("productosDeseados")) || [];
 
-  
-  if(productos.length === 0){
-    const textoSinProductos = document.createElement("p")
-    textoSinProductos.innerHTML = "No tiene Productos Deseados"
-    textoSinProductos.classList = "mt-2"
-    tbody.appendChild(textoSinProductos)
-  } else {
-  botonComprar.href = "./html/404.html"
   productos.forEach((producto, indice) => {
     const fila = document.createElement("tr");
 
@@ -40,34 +33,15 @@ function cargarProductos() {
     const botonEliminar = document.createElement("button");
     botonEliminar.textContent = "Eliminar";
     botonEliminar.addEventListener("click", () => {
-      event.preventDefault()
-      swal({
-        title: "Está seguro de que desea borrar este producto?",
-        text: "Una vez borrado no puede recuperarlo",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((willDelete) => {
-        if (willDelete) {
-          botonComprar.removeAttribute("href");
-          eliminarProducto(indice);
-          cargarProductos(); // Recargar la tabla después de eliminar el producto
-          swal("El producto fue eliminado exitosamente", {
-            icon: "success",
-          });
-        } else {
-          swal("El producto no fue eliminado");
-        }
-      });
+      eliminarProducto(indice);
+      cargarProductos(); // Recargar la tabla después de eliminar el producto
     });
     columnaAcciones.appendChild(botonEliminar);
     fila.appendChild(columnaAcciones);
 
     tbody.appendChild(fila);
-  })};
-
+  });
 }
-
 
 // Función para eliminar un producto del localStorage
 function eliminarProducto(indice) {
@@ -100,4 +74,3 @@ cartaProducto.addEventListener("click", (e) => {
     cargarProductos();
   }
 });
-
