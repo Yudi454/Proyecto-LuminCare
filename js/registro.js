@@ -8,6 +8,46 @@ const usuarioRechazado = document.getElementById("usuarioRechazado");
 const contrasenaRepetida = document.getElementById("contrasenaRepetida")
  
 
+form.addEventListener("input", function(){
+  const valorNombre = inputNombre.value.trim()
+  const valorApellido = inputApellido.value.trim()
+  const valorCorreo = inputEmail.value.trim()
+  const valorContraseña = inputContraseña.value.trim()
+  const valorContraseña2 = inputContraseña2.value.trim()
+  const patronCorreo = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+  const patronContraseña = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
+  const patronLetras = /^[a-zA-Z]+(\s[a-zA-Z]+)?$/;
+  inputContraseña.setAttribute("type" , "password")
+
+  if(valorNombre.length <2 || valorNombre.length > 20 || !patronLetras.test(valorNombre)){
+    inputNombre.setCustomValidity("El valor ingresado debe de ser mayor a 2, menor a 20 y debe de contener solo letras")
+  } else {
+    inputNombre.setCustomValidity("")
+  }
+  if(valorApellido.length <2 || valorApellido.length >20 || !patronLetras.test(valorApellido)){
+    inputApellido.setCustomValidity("El valor ingresado debe de ser mayor a 2, menor a 20 y debe de contener solo letras")
+  } else{
+    inputApellido.setCustomValidity("")
+  }
+  if(valorCorreo < 3 || valorCorreo > 30 || !patronCorreo.test(valorCorreo)){
+     inputEmail.setCustomValidity("El valor ingresado debe de ser mayor a 3, menor a 30 y debe de contener un @ con una direccion de correo electronico");
+  } else {
+     inputEmail.setCustomValidity("");
+  }
+  if(valorContraseña.length < 8 || valorContraseña.length > 16 || !(patronContraseña.test(valorContraseña)) ){
+     inputContraseña.setCustomValidity("La contraseña ingresada debe de ser mayor a 8, menor a 16 y debe de contener por lo menos una letra mayuscula, una minuscula y un numero")
+  } else {
+     inputContraseña.setCustomValidity("")
+  }
+  if(valorContraseña2.length < 8 || valorContraseña2.length > 16 || !(patronContraseña.test(valorContraseña2)) ){
+     inputContraseña2.setCustomValidity("La contraseña ingresada debe de ser mayor a 8, menor a 16 y debe de contener por lo menos una letra mayuscula, una minuscula y un numero")
+  } else {
+     inputContraseña2.setCustomValidity("")
+  }
+ }
+  
+ )
+
 const admin = {
   nombre: "admin",
   apellido: "admin",

@@ -1,3 +1,6 @@
+body{
+    font-family: Poppins, sans-serif;
+}
 
 h2{
     text-align: center;
@@ -134,10 +137,13 @@ rotateX(5deg);
   }
   #titulo {
     text-align: center;
+    padding: 2em;
 
   }
 
-  
+  #linea{
+    padding: 2em;
+  }
   hr#linea {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -147,4 +153,12 @@ rotateX(5deg);
 
   .botonAgregar{
     background: #40514E !important;
+  }
+  #descripcion{
+    word-wrap: break-word !important;
+    word-break: break-all !important;
+    
+  }
+  .fa-sharp{
+  padding: 1em;
   }
