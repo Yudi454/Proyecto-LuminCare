@@ -14,10 +14,11 @@ JSON.parse(obtenerproductos).forEach((producto) => {
                 <h5 class="card-title" id="productos-item-name">${producto.nombre}</h5>
                 <p id="descripcion" class="card-text">${producto.descripcion}</p>
                 <h5 class="productos-item-value">$<strong id="productos-item-price" class="font-weight-bold">${producto.precio}</strong></h5>
-                <a  data-filter="${producto.categoria}" data-id="${producto.codigo}" class="btn btn-dark botonAgregar mb-2">
-                Añadir a deseados</a>
                 
                 <div class="contenedorBtnComprar">
+                <a  data-filter="${producto.categoria}" data-id="${producto.codigo}" class="btn btn-dark botonAgregar ">
+                <i class="fa-solid fa-star" style="color: #e8d13b;"></i>
+                </a>
                 <a href="./html/404.html"
                 class="btn btn-outline-dark"
                 data-filter="${producto.categoria}">Añadir al Carrito</a>
